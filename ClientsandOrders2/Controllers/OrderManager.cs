@@ -16,7 +16,7 @@ namespace ClientsandOrders.BL.Controllers
             };
         }
 
-        public void Edit(uint orderId, string description, float orderPrice, DateTime orderDate, DateTime? closeDateTime)
+        public void Edit(uint orderId, string description, float orderPrice, DateTime orderDate, DateTime closeDateTime)
         {
             Order order = clients.FirstOrDefault(o => o.Id == orderId);
             if (order == null)

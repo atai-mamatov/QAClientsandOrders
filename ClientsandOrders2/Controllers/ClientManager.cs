@@ -25,7 +25,15 @@ namespace ClientsandOrders.BL.Controllers
 
         public static void AddClient()
         {
+            Console.Clear();
+            Console.WriteLine("Lets add a new client");
             Client client = MakeClient();
+            Menu.clientController.Add(client);
+            Console.Clear();
+            Console.WriteLine("A new client has been created\n" +
+                "Press any key to continue");
+            Console.ReadKey();
+            Menu.Start();
         }
 
         public static void AddOrderToClient(int clientId, Order order)

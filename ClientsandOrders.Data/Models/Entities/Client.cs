@@ -10,6 +10,11 @@ namespace ClientsandOrders.Data.Models.Entities
         public uint OrderAmount { get; set; }
         public DateTime DateAdd { get; set; }
         public List<Order> OrdersList = new List<Order>();
+
+        public override string ToString()
+        {
+            return $"{Id} | {FirstName} | {SecondName} | {OrderAmount} | {DateAdd.Date:dd MMM yyyy} | {PhoneNum}";
+        }
     }
 
 }

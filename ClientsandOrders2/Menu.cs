@@ -16,9 +16,10 @@ namespace ClientsandOrders2.CMD
 
         public static void Start()
         {
+            Console.Clear();
             Console.WriteLine("Main Menu\n\n" +
-                "Clients - C \n" +
-                "Orders - O");
+                "Press C for Clients - [C] \n" +
+                "Press O for Orders - [O] ");
 
             var choice = Console.ReadKey(true);
 
@@ -82,7 +83,25 @@ namespace ClientsandOrders2.CMD
 
         public static void Next<T>() where T : BaseEntity
         {
+            Console.Clear();
+            string table = "Clients List\n\n";
 
+            if(typeof(T) == typeof(Client))
+            {
+                table += "Id | First Name | Second Name | Order Amount | Add Date | Phone Number\n\n";
+                List<Client> allClients = clientController.GetAll();
+                foreach(Client client in allClients)
+                {
+                    table += client.ToString() + "\n";
+                }
+                Console.WriteLine(table);
+                Console.ReadKey();
+            }
+            else if (typeof(T) == typeof(Order))
+            {
+
+            }
+                
 
         }
 
