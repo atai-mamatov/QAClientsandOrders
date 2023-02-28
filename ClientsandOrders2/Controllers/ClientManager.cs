@@ -47,11 +47,12 @@ namespace ClientsandOrders.BL.Controllers
 
         public static void DeleteClient(int clientId)
         {
-            //Client client = clients.FirstOrDefault(c => c.Id == clientId);
-            //if (client != null)
-            //{
-            //    clients.Remove(client);
-            //}
+            Client client = clientController.FirstOrDefault(c => c.Id == clientId);
+            if (client != null)
+            {
+                clientController.Remove(client);
+            }
+
         }
 
         public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum)

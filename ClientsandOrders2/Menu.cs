@@ -76,7 +76,7 @@ namespace ClientsandOrders2.CMD
                         ClientManager.AddClient();
                         break;
                     case ConsoleKey.E:
-                        Next<Order>();
+                        ClientManager.EditClient();
                         break;
 
                 }
