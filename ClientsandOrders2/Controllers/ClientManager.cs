@@ -1,13 +1,21 @@
-﻿using ClientsandOrders.Data.Database.SqlServer;
-using ClientsandOrders.Data.Models.Entities;
-using ClientsandOrders.BL.Controllers;
+﻿using ClientsandOrders.Data.Models.Entities;
 using ClientsandOrders2.CMD;
-using System.Collections.Generic;
 
 namespace ClientsandOrders.BL.Controllers
 {
     public static class ClientManager
     {
+        //AppContext context = new AppContext();
+        //private readonly AppDbContext _context;
+
+        //public ClientManager(AppDbContext context)
+        //{
+        //    context = _context;
+        //}
+
+        //List<Client> allClients = clientController.GetAll();
+
+
         public static Client MakeClient()
         {
             string firstName = ConsoleHelper.GetString("first name");
@@ -27,8 +35,12 @@ namespace ClientsandOrders.BL.Controllers
         public static void AddClient()
         {
             Console.Clear();
+
+            Console.CursorVisible = true;
+
             Console.WriteLine("Lets add a new client");
             Client client = MakeClient();
+            Console.CursorVisible= false;
             Menu.clientController.Add(client);
             Console.Clear();
             Console.WriteLine("A new client has been created\n" +
@@ -46,32 +58,46 @@ namespace ClientsandOrders.BL.Controllers
             //}
         }
 
-        public static void DeleteClient()
+
+        public static void DeleteClient(string table)
         {
             Console.Clear();
-            List<Client> client = Client.FirstOrDefault(c => c.Id == clientId);
-            if (client != null)
-            {
-                Menu.clientController.Delete(client);
-                Console.Clear();
-                Console.WriteLine("Client has been deleted successfully!");
-            }
+            Console.CursorVisible = true;
 
+            Console.WriteLine($"Input ID of a client for deleting:\n{table}");
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.Write("Incorrect input, try again: ");
+            }
+            Client client = Menu.clientController.GetById(choice);
+            Console.WriteLine($"\nAre you sure you want to delete {client.FirstName} {client.SecondName}?\n" +
+                $"[Y] - YES    [N] - NO");
+            Console.CursorVisible = false;
+
+            ConsoleKeyInfo button;
+            do
+            {
+                button = Console.ReadKey(true);
+            } while (button.Key != ConsoleKey.Y && button.Key != ConsoleKey.N);
+            switch (button.Key)
+            {
+                case ConsoleKey.Y:
+                    Menu.clientController.Delete(client);
+                    Console.WriteLine($"{client.FirstName} {client.SecondName} has been deleted!");
+                    break;
+            }
+            Console.WriteLine("Press any button to return to the main menu...");
+            Console.ReadKey(true);
+            Menu.Start();
         }
+
+
 
         public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum)
         {
-            //Client client = clients.FirstOrDefault(c => c.Id == clientId);
-            //if (client != null)
-            //{
-
-            //    client.FirstName = firstName;
-            //    client.SecondName = secondName;
-            //    client.PhoneNum = phoneNum;
-            //    client.OrderAmount = orderAmount;
-            //}
-            //return client;
-            return null;
+                
+            
         }
     }
 

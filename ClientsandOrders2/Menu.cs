@@ -75,10 +75,10 @@ namespace ClientsandOrders2.CMD
                         ClientManager.AddClient();
                         break;
                     case ConsoleKey.E:
-                        ClientManager.EditClient();
+                        //ClientManager.EditClient();
                         break;
                     case ConsoleKey.D:
-                        ClientManager.DeleteClient();
+                        ClientManager.DeleteClient(table);
                         break;
                 }
 
