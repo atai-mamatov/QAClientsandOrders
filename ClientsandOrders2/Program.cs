@@ -24,11 +24,9 @@ while (true)
             string secondName = Console.ReadLine();
             Console.WriteLine("Enter phone number:");
             string phoneNum = Console.ReadLine();
-            Console.WriteLine("Enter order amount:");
-            uint orderAmount = Convert.ToUInt32(Console.ReadLine());
             Console.WriteLine("Enter date added (yyyy-MM-dd):");
             DateTime dateAdd = DateTime.Parse(Console.ReadLine());
-            ClientManager.AddClient(firstName, secondName, phoneNum, orderAmount, dateAdd);
+            ClientManager.AddClient(firstName, secondName, phoneNum, dateAdd);
             Console.WriteLine("Client added successfully.");
             break;
 

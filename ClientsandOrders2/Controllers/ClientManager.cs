@@ -9,18 +9,26 @@ namespace ClientsandOrders.BL.Controllers
     {
         private static List<Client> clients = new List<Client>();
 
-        public static Client AddClient(string firstName, string secondName, string phoneNum, uint orderAmount, DateTime dateAdd)
+        public static Client MakeClient()
         {
-            string firstName = ConsoleHelper.GetString
-            Client client = new Client
+            string firstName = ConsoleHelper.GetString("first name");
+            string secondName = ConsoleHelper.GetString("second name");
+            string phoneNum = ConsoleHelper.GetString("phone number");
+            DateTime dateAdd = DateTime.Now;
+            Client client = new Client()
             {
                 FirstName = firstName,
                 SecondName = secondName,
                 PhoneNum = phoneNum,
-                OrderAmount = orderAmount,
                 DateAdd = dateAdd
             };
             return client;
+        }
+
+        public static void AddClient()
+        {
+            Client client = MakeClient();
+            clients.Add(client);
         }
 
         public static void AddOrderToClient(int clientId, Order order)
