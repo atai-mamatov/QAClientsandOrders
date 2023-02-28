@@ -96,8 +96,8 @@ namespace ClientsandOrders.BL.Controllers
 
         public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum)
         {
-                
-            
+
+            return null;
         }
     }
 
