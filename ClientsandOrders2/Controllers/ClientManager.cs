@@ -7,8 +7,6 @@ namespace ClientsandOrders.BL.Controllers
 {
     public static class ClientManager
     {
-        private static List<Client> clients = new List<Client>();
-
         public static Client MakeClient()
         {
             string firstName = ConsoleHelper.GetString("first name");
@@ -28,39 +26,39 @@ namespace ClientsandOrders.BL.Controllers
         public static void AddClient()
         {
             Client client = MakeClient();
-            clients.Add(client);
         }
 
         public static void AddOrderToClient(int clientId, Order order)
         {
-            Client client = clients.FirstOrDefault(c => c.Id == clientId);
-            if (client != null)
-            {
-                client.OrdersList.Add(order);
-            }
+            //Client client = clients.FirstOrDefault(c => c.Id == clientId);
+            //if (client != null)
+            //{
+            //    client.OrdersList.Add(order);
+            //}
         }
 
         public static void DeleteClient(int clientId)
         {
-            Client client = clients.FirstOrDefault(c => c.Id == clientId);
-            if (client != null)
-            {
-                clients.Remove(client);
-            }
+            //Client client = clients.FirstOrDefault(c => c.Id == clientId);
+            //if (client != null)
+            //{
+            //    clients.Remove(client);
+            //}
         }
 
-        public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum, uint orderAmount)
+        public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum)
         {
-            Client client = clients.FirstOrDefault(c => c.Id == clientId);
-            if (client != null)
-            {
+            //Client client = clients.FirstOrDefault(c => c.Id == clientId);
+            //if (client != null)
+            //{
 
-                client.FirstName = firstName;
-                client.SecondName = secondName;
-                client.PhoneNum = phoneNum;
-                client.OrderAmount = orderAmount;
-            }
-            return client;
+            //    client.FirstName = firstName;
+            //    client.SecondName = secondName;
+            //    client.PhoneNum = phoneNum;
+            //    client.OrderAmount = orderAmount;
+            //}
+            //return client;
+            return null;
         }
     }
 
