@@ -49,7 +49,7 @@ namespace ClientsandOrders.BL.Controllers
         public static void DeleteClient()
         {
             Console.Clear();
-            List<Client> client = allClients.FirstOrDefault(c => c.Id == clientId);
+            List<Client> client = Client.FirstOrDefault(c => c.Id == clientId);
             if (client != null)
             {
                 Menu.clientController.Delete(client);

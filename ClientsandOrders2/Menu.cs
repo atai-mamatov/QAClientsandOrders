@@ -77,7 +77,9 @@ namespace ClientsandOrders2.CMD
                     case ConsoleKey.E:
                         ClientManager.EditClient();
                         break;
-
+                    case ConsoleKey.D:
+                        ClientManager.DeleteClient();
+                        break;
                 }
 
             }
