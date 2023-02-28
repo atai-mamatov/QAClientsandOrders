@@ -2,6 +2,7 @@
 using ClientsandOrders.Data.Models.Entities;
 using ClientsandOrders.BL.Controllers;
 using ClientsandOrders2.CMD;
+using System.Collections.Generic;
 
 namespace ClientsandOrders.BL.Controllers
 {
@@ -45,12 +46,15 @@ namespace ClientsandOrders.BL.Controllers
             //}
         }
 
-        public static void DeleteClient(int clientId)
+        public static void DeleteClient()
         {
-            Client client = clientController.FirstOrDefault(c => c.Id == clientId);
+            Console.Clear();
+            List<Client> client = allClients.FirstOrDefault(c => c.Id == clientId);
             if (client != null)
             {
-                clientController.Remove(client);
+                Menu.clientController.Delete(client);
+                Console.Clear();
+                Console.WriteLine("Client has been deleted successfully!");
             }
 
         }
