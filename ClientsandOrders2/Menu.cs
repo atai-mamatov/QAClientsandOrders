@@ -57,7 +57,6 @@ namespace ClientsandOrders2.CMD
                     table += client.ToString() + "\n";
                 }
                 Console.WriteLine(table);
-                Console.ReadKey();
                 Console.WriteLine("Choose what you would like to do\n" +
                     "Add Client Press A - [A]\n" +
                     "Edit Client Press E - [E]\n" +
