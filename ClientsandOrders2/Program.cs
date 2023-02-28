@@ -1,41 +1,56 @@
-﻿using ClientsandOrders.Data.Repositories.Implementations;
-using ClientsandOrders.Data.Repositories.Interfaces;
-using ClientsandOrders2.CMD;
+﻿using ClientsandOrders.BL.Controllers;
+using ClientsandOrders.Data.Models.Entities;
 
-//Console.WriteLine("Hello, Friend!");
-//Console.WriteLine("Lets create a Client!");
+while (true)
+{
+
+    Console.WriteLine("Choose an action:");
+    Console.WriteLine("1. Add client");
+    Console.WriteLine("2. Edit client");
+    Console.WriteLine("3. Remove client");
+    Console.WriteLine("4. Add order");
+    Console.WriteLine("5. Edit order");
+    Console.WriteLine("6. Remove order");
+    Console.WriteLine("0. Exit");
+
+    int choice = Convert.ToInt32(Console.ReadLine());
+
+    switch (choice)
+    {
+        case 1:
+            Console.WriteLine("Enter first name:");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter second name:");
+            string secondName = Console.ReadLine();
+            Console.WriteLine("Enter phone number:");
+            string phoneNum = Console.ReadLine();
+            Console.WriteLine("Enter order amount:");
+            uint orderAmount = Convert.ToUInt32(Console.ReadLine());
+            Console.WriteLine("Enter date added (yyyy-MM-dd):");
+            DateTime dateAdd = DateTime.Parse(Console.ReadLine());
+            ClientManager.AddClient(firstName, secondName, phoneNum, orderAmount, dateAdd);
+            Console.WriteLine("Client added successfully.");
+            break;
+
+        case 2:
+            Console.WriteLine("Enter client index to edit:");
+            int index = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter first name:");
+            firstName = Console.ReadLine();
+            Console.WriteLine("Enter second name:");
+            secondName = Console.ReadLine();
+            Console.WriteLine("Enter phone number:");
+            phoneNum = Console.ReadLine();
+            Console.WriteLine("Enter order amount:");
+            orderAmount = Convert.ToUInt32(Console.ReadLine());
+            Console.WriteLine("Enter date added (yyyy-MM-dd):");
+            dateAdd = DateTime.Parse(Console.ReadLine());
+            ClientManager.EditClient(index, firstName, secondName, phoneNum, orderAmount);
+            Console.WriteLine("Client edited successfully.");
+            break;
 
 
-//static void Main(string[] args)
-//{
-//    // Создаем экземпляр объекта реализации IRepository<MyEntity>
-//    Menu repository = new Repository();
-    
-
-//    // Создаем экземпляр объекта Menu<MyEntity> и передаем в него repository
-//    var menu = new Menu(repository);
-
-//    menu.DisplayMenu();
-
-//}
 
 
-
-
-
-
-
-////static void Main(string[] args)
-////{
-////    var Repository = new Repository();
-////    var menu = new Menu<Repository>(Repository);
-///
-/// 
-/// 
-/// 
-/// 
-/// 
-/// 
-/// 
-////    menu.DisplayMenu();
-////};
+    }
+}

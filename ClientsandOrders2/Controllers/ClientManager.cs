@@ -1,13 +1,17 @@
-﻿using ClientsandOrders.Data.Models.Entities;
+﻿using ClientsandOrders.Data.Database.SqlServer;
+using ClientsandOrders.Data.Models.Entities;
+using ClientsandOrders.BL.Controllers;
+using ClientsandOrders2.CMD;
 
 namespace ClientsandOrders.BL.Controllers
 {
-    public class ClientManager
+    public static class ClientManager
     {
-        private List<Client> clients = new List<Client>();
+        private static List<Client> clients = new List<Client>();
 
-        public void Add(string firstName, string secondName, string phoneNum, uint orderAmount, DateTime dateAdd)
+        public static Client AddClient(string firstName, string secondName, string phoneNum, uint orderAmount, DateTime dateAdd)
         {
+            string firstName = ConsoleHelper.GetString
             Client client = new Client
             {
                 FirstName = firstName,
@@ -16,10 +20,10 @@ namespace ClientsandOrders.BL.Controllers
                 OrderAmount = orderAmount,
                 DateAdd = dateAdd
             };
-            clients.Add(client);
+            return client;
         }
 
-        public void AddOrderToClient(int clientId, Order order)
+        public static void AddOrderToClient(int clientId, Order order)
         {
             Client client = clients.FirstOrDefault(c => c.Id == clientId);
             if (client != null)
@@ -28,7 +32,7 @@ namespace ClientsandOrders.BL.Controllers
             }
         }
 
-        public void Delete(int clientId)
+        public static void DeleteClient(int clientId)
         {
             Client client = clients.FirstOrDefault(c => c.Id == clientId);
             if (client != null)
@@ -37,16 +41,18 @@ namespace ClientsandOrders.BL.Controllers
             }
         }
 
-        public void Edit(int clientId, string firstName, string secondName, string phoneNum, uint orderAmount)
+        public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum, uint orderAmount)
         {
             Client client = clients.FirstOrDefault(c => c.Id == clientId);
             if (client != null)
             {
+
                 client.FirstName = firstName;
                 client.SecondName = secondName;
                 client.PhoneNum = phoneNum;
                 client.OrderAmount = orderAmount;
             }
+            return client;
         }
     }
 

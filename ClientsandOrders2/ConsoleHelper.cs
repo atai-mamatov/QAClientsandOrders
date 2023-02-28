@@ -1,6 +1,6 @@
 ﻿namespace ClientsandOrders2.CMD
 {
-    public class ConsoleHelper
+    public static class ConsoleHelper
     {
         public static string GetString(string fieldname)
         {
