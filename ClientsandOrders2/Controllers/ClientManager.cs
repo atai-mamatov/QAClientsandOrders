@@ -103,7 +103,7 @@ namespace ClientsandOrders.BL.Controllers
             client.PhoneNum = ConsoleHelper.GetString("phone number");
             Menu.clientController.Edit(client);
             Console.Clear();
-            Console.WriteLine("A new client has been created\n" +
+            Console.WriteLine("A client has been updated\n" +
                 "Press any key to continue");
             Console.ReadKey();
             Menu.Start();
