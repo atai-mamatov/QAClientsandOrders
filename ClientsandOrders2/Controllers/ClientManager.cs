@@ -5,16 +5,6 @@ namespace ClientsandOrders.BL.Controllers
 {
     public static class ClientManager
     {
-        //AppContext context = new AppContext();
-        //private readonly AppDbContext _context;
-
-        //public ClientManager(AppDbContext context)
-        //{
-        //    context = _context;
-        //}
-
-        //List<Client> allClients = clientController.GetAll();
-
 
         public static Client MakeClient()
         {
@@ -94,11 +84,32 @@ namespace ClientsandOrders.BL.Controllers
 
 
 
-        public static Client EditClient(int clientId, string firstName, string secondName, string phoneNum)
+        public static Client EditClient(string table)
         {
+            Console.Clear();
+            Console.CursorVisible = true;
 
-            return null;
+            Console.WriteLine($"Input ID of a client for edititng:\n{table}");
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.Write("Incorrect input, try again: ");
+            }
+            Client client = Menu.clientController.GetById(choice);
+            Console.WriteLine($"\nAre you sure you want to edit {client.FirstName} {client.SecondName}?\n" +
+                $"[Y] - YES    [N] - NO");
+            client.FirstName = ConsoleHelper.GetString("first name");
+            client.SecondName = ConsoleHelper.GetString("second name");
+            client.PhoneNum = ConsoleHelper.GetString("phone number");
+            Menu.clientController.Edit(client);
+            Console.Clear();
+            Console.WriteLine("A new client has been created\n" +
+                "Press any key to continue");
+            Console.ReadKey();
+            Menu.Start();
+            return client;
         }
+
     }
 
 }
