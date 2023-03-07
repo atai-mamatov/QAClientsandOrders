@@ -12,8 +12,4 @@
     <ProjectReference Include="..\ClientsandOrders.Data\ClientsandOrders.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\at\" />
-  </ItemGroup>
-
 </Project>
